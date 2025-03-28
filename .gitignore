@@ -1,2 +1,16 @@
-﻿.idea
+﻿config.ini
+.idea
 .ipynb_checkpoints
+*.db
+__pycache__
+src/create_db/file.db-shm
+src/create_db/file.db-wal
+src/create_db/db_update.log
+*.png
+src/sandbox/pyimgui/db_update.log
+src/sandbox/image_viewer/image_viewer_config.json
+src/sandbox/pyimgui/file.db-wal
+src/sandbox/pyimgui/file.db-shm
+*.log
+data/file.db-shm
+data/file.db-wal
