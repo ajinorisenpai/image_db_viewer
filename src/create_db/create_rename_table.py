@@ -6,9 +6,9 @@ from typing import List, Tuple, Optional
 from src.utils.config_constant import AppSettings
 
 
-def main():
+def main(db_file):
     # データベースに接続
-    conn: sqlite3.connect = sqlite3.connect(AppSettings.DB_FILE)
+    conn: sqlite3.connect = sqlite3.connect(db_file)
     cursor: sqlite3.Cursor = conn.cursor()
 
     # リネーム用テーブルを作成

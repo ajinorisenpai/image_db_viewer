@@ -88,9 +88,8 @@ def process_file(args):
         return False
 
 
-def move_files_and_update_db(max_workers=8, batch_size=500):
+def move_files_and_update_db(db_path,max_workers=8, batch_size=500):
     """マルチスレッドでファイルを移動し、DBを更新する関数"""
-    db_path = AppSettings.DB_FILE
 
     # メインDB接続（読み取り専用）
     conn = sqlite3.connect(db_path)
@@ -161,10 +160,10 @@ def move_files_and_update_db(max_workers=8, batch_size=500):
 
 
 # 確認メッセージを表示してから実行
-def main():
-    move_files_and_update_db(max_workers=8)
+def main(db_file):
+    move_files_and_update_db(db_file,max_workers=8)
 
 
 
 if __name__ == "__main__":
-    main()
+    main(AppSettings.DB_FILE)

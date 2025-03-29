@@ -5,9 +5,6 @@ import argparse  # コマンドライン引数処理用
 from typing import List, Optional, Set, Tuple, Dict, Any
 from src.utils.config_constant import AppSettings
 
-# 定数定義
-DB_FILE: str = AppSettings.DB_FILE
-
 # 簡略化したロギング設定
 logging.basicConfig(
     level=logging.INFO,
@@ -195,7 +192,7 @@ def get_new_images(cursor: sqlite3.Cursor, days: int = 7) -> List[int]:
     return [row[0] for row in cursor.fetchall()]
 
 
-def main() -> None:
+def main(db_file) -> None:
     """メイン処理"""
     # コマンドライン引数の解析
     parser: argparse.ArgumentParser = argparse.ArgumentParser(description='画像関連付けテーブル作成・更新ツール')
@@ -215,7 +212,7 @@ def main() -> None:
 
     try:
         # データベース接続とトランザクション開始
-        with sqlite3.connect(DB_FILE) as conn:
+        with sqlite3.connect(db_file) as conn:
             conn.execute("PRAGMA foreign_keys = ON")
             cursor: sqlite3.Cursor = conn.cursor()
 

@@ -17,8 +17,8 @@ if __name__ == '__main__':
     )
     updater.run()
 
-    create_character_table.main()
-    create_relation_table.main()
-    create_rename_table.main()
+    create_character_table.main(AppSettings.DB_FILE)
+    create_relation_table.main(AppSettings.DB_FILE)
+    create_rename_table.main(AppSettings.DB_FILE)
     ## rename
-    ProgressTracker.main()
+    ProgressTracker.main(AppSettings.DB_FILE)
